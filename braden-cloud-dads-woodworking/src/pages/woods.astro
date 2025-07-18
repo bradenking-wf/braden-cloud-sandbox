@@ -1,0 +1,188 @@
+---
+const woods = [
+  {
+    name: "Oak",
+    emoji: "🪵",
+    image: "/app/images/oak.jpg",  // <-- prefix /app
+    description: "Strong and durable hardwood with prominent grain patterns. Excellent for furniture, flooring, and cabinetry.",
+    benefits: [
+      "Extremely strong and long-lasting",
+      "Takes stain beautifully",
+      "Readily available and affordable",
+      "Great for mortise and tenon joints"
+    ],
+    considerations: [
+      "Can be challenging for beginners due to hardness",
+      "Requires sharp tools and slower cutting speeds",
+      "Heavy weight may require additional support"
+    ]
+  },
+  {
+    name: "Maple",
+    emoji: "🍁",
+    image: "/app/images/maple.jpg",
+    description: "Hard, dense wood with tight, even grain. Perfect for cutting boards, tool handles, and fine furniture.",
+    benefits: [
+      "Smooth, consistent grain ideal for finishing",
+      "Excellent for food-safe projects",
+      "Takes both stain and natural finish well",
+      "Machines cleanly with minimal tear-out"
+    ],
+    considerations: [
+      "Can be difficult to stain evenly",
+      "Harder on cutting tools than softer woods",
+      "More expensive than common hardwoods"
+    ]
+  },
+  {
+    name: "Walnut",
+    emoji: "🌰",
+    image: "/app/images/walnut.jpg",
+    description: "Premium hardwood prized for its rich chocolate tones and beautiful grain patterns. The gold standard for fine furniture.",
+    benefits: [
+      "Stunning natural color and grain",
+      "Easy to work with hand and power tools",
+      "Excellent for detailed carving and joinery",
+      "Naturally resistant to insects and decay"
+    ],
+    considerations: [
+      "Most expensive of common hardwoods",
+      "Limited availability in wide boards",
+      "Lighter sapwood may require careful board selection"
+    ]
+  }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Wood Selector</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      .wood-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .wood-card {
+        padding: 1.5rem;
+        border: 2px solid #e1e5e9;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      .wood-card:hover {
+        border-color: #0070f3;
+        background-color: #f8fafc;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      }
+      .wood-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .wood-header h2 {
+        margin: 0;
+        color: #2d3748;
+      }
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+      .description {
+        margin-bottom: 1.5rem;
+        color: #4a5568;
+        font-weight: 500;
+      }
+      .benefits, .considerations {
+        margin-bottom: 1rem;
+      }
+      .benefits h4, .considerations h4 {
+        margin: 0 0 0.5rem 0;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+      }
+      .benefits h4 {
+        color: #059669;
+      }
+      .considerations h4 {
+        color: #dc2626;
+      }
+      .benefits ul, .considerations ul {
+        margin: 0;
+        padding-left: 1.2rem;
+        font-size: 0.9rem;
+      }
+      .benefits li {
+        color: #065f46;
+        margin-bottom: 0.25rem;
+      }
+      .considerations li {
+        color: #991b1b;
+        margin-bottom: 0.25rem;
+      }
+      h1 {
+        text-align: center;
+        color: #1a202c;
+        margin-bottom: 0.5rem;
+      }
+      .subtitle {
+        text-align: center;
+        color: #718096;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🪵 What Wood Should I Use?</h1>
+    <p class="subtitle">Choose the right wood for your next woodworking project</p>
+    <div class="wood-grid">
+      {woods.map((wood) => (
+        <div class="wood-card">
+          <div class="wood-header">
+            <span style="font-size: 1.5rem;">{wood.emoji}</span>
+            <h2>{wood.name}</h2>
+          </div>
+          <img src={wood.image} alt={wood.name} />
+          <p class="description">{wood.description}</p>
+          
+          <div class="benefits">
+            <h4>✅ Benefits</h4>
+            <ul>
+              {wood.benefits.map((benefit) => (
+                <li>{benefit}</li>
+              ))}
+            </ul>
+          </div>
+          
+          <div class="considerations">
+            <h4>⚠️ Considerations</h4>
+            <ul>
+              {wood.considerations.map((consideration) => (
+                <li>{consideration}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </body>
+</html>
